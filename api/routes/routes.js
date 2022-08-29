@@ -1,11 +1,12 @@
-const
-  express = require('express');
-  bodyParser = require('body-parser')
+const express = require('express');
+const bodyParser = require('body-parser');
 
 // create application/json parser - used for /post method only
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+);
 app.use(bodyParser.json());
 
 // routes is an instance of the express router
@@ -19,12 +20,12 @@ const dbo = require('../db/db');
 // Health check endpoint
 // Endpoint to call to ensure your API is up and healthy
 // Can use a service to call this and report the health of your API using CI
-routes.route('/health').get(async function(_req, res) {
+routes.route('/health').get(async function (_req, res) {
   const data = {
     uptime: process.uptime(),
     message: 'OK',
-    date: new Date()
-  }
+    date: new Date(),
+  };
 
   res.status(200).send(data);
 });

@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express'),
   app = express(),
   PORT = process.env.PORT || 3000;
 
@@ -10,13 +10,13 @@ app.use(require('./api/routes/routes'));
 
 // perform a database connection when the server starts
 dbo.connectToServer(function (err) {
-    if (err) {
-      console.error(err);
-      process.exit();
-    }
+  if (err) {
+    console.error(err);
+    process.exit();
+  }
 
-    // start the Express server
-    app.listen(PORT, () => {
-        console.log(`Pet Insurance Calculator REST API server started on: ${PORT}`);
-    });
+  // start the Express server
+  app.listen(PORT, () => {
+    console.log(`Pet Insurance Calculator REST API server started on: ${PORT}`);
+  });
 });
