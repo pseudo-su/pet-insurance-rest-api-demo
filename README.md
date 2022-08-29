@@ -66,7 +66,7 @@ The server runs until stopped, by cancelling execution of the command.
 
 Hit the health check endpoint via browser (or postman) at:
 
-[http://localhost:3000/pets](http://localhost:3000/pets)
+[http://localhost:3000/health](http://localhost:3000/health)
 
 Other scripts
 
