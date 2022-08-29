@@ -2,14 +2,29 @@
   "name": "petinsuranceapi",
   "version": "1.0.0",
   "description": "API to calculate cost of pet insurance",
+  "license": "ISC",
+  "author": "Mila Koscialkowska",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix ."
   },
-  "author": "Mila Koscialkowska",
-  "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.13",
+    "eslint-config-prettier": "^8.5.0",
     "express": "^4.17.2",
-    "mongoose": "^6.2.1"
+    "mongodb": "^4.9.0",
+    "prettier": "^2.7.1"
+  },
+  "engines": {
+    "node": "^16.17",
+    "npm": "^8.15",
+    "yarn": "DO_NOT_USE"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }

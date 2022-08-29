@@ -1,55 +1,79 @@
 # Pet Insurance REST API Demo
 
-A demo application that runs an API server and database locally.  
-Only the health check endpoint has been implemented.  
-Other endpoints will be implemented in the Future Associates API session.  
+A demo application that runs an API server and database locally.
+Only the health check endpoint has been implemented.
+Other endpoints will be implemented in the Future Associates API session.
 
----
+## Project setup
 
-## Dependencies
+### Global dependencies
 
-- node  
-- npm  
-- mongodb-community  
+- [Homebrew](https://brew.sh/)
+- NodeJS and npm installed via [`nvm`](https://github.com/nvm-sh/nvm)
+- `docker` and `docker-compose` (Using `qemu`, `lima` and `colima` instead of Docker desktop due to licensing)
 
-install brew: https://brew.sh/  
+```sh
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-install dependencies via brew:
+# Install nvm, NodeJS and npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install
+nvm use
+```
 
-`brew install node`  
-`brew tap mongodb/brew`  (migrated distribution from custom tap)  
-`brew install mongodb-community`  
-`brew install npm`
+If you don't have docker installed you can do so using `qemu`, `lima` and `colima`
 
-if issue installing or updating npm: https://flaviocopes.com/npm-fix-missing-write-access-error/
+```sh
+# Install docker tools
+brew install docker
+brew install docker-compose
+brew install docker-credential-helper
 
-Note: If you still have the old mongodb installed from homebrew-core:  
-`brew services stop mongodb`  
-`brew uninstall homebrew/core/mongodb`
+# Install lima
+brew install qemu
+brew install lima
+limactl start
 
----
+# Colima
+brew install colima
+colima start
 
-## Generate Node modules
-Required packages (and their dependencies) must be installed locally with the following command.  
-These are defined in package.json  
-`npm install`
+# List currently running docker containers (should print out an empty list)
+docker ps
+```
 
----
+### Development scripts
 
-## Run Database Server
+```sh
+# Make sure the correct version of language tooling is active before running any commands
+nvm use;
 
-To start the mongodb server locally run:
-`brew services start mongodb/brew/mongodb-community`  
+# Install project dependencies
+npm install;
 
-To stop the server:
-`brew services stop mongodb/brew/mongodb-community`  
+# Run code verification (eslint)
+npm run verify;
 
-## Run API Server
+# Start devstack (MongoDB database)
+make devstack.start;
 
-To start the API server locally run:  
-`npm run start`
+# Run API Server
+npm run start;
+```
 
 The server runs until stopped, by cancelling execution of the command.
 
-Hit the health check endpoint via browser (or postman) at:  
-http://localhost:3000/pets
+Hit the health check endpoint via browser (or postman) at:
+
+[http://localhost:3000/health](http://localhost:3000/health)
+
+Other scripts
+
+```sh
+# Stop the devstack
+make devstack.stop;
+
+# Delete the devstack and recreate fresh;
+make devstack.recreate;
+```
