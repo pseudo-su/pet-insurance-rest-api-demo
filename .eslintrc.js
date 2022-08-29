@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   env: {
     browser: false,
@@ -7,15 +9,16 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    // Disable rules handled by prettier
+    'plugin:node/recommended',
     'plugin:prettier/recommended',
   ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 2021,
   },
-  plugins: ['prettier'],
+  plugins: ['prettier', 'node'],
   rules: {
     'prettier/prettier': 'warn',
+    strict: 'warn',
   },
 };

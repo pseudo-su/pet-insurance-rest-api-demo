@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 
 // appRoutes is an instance of the express router

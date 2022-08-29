@@ -1,17 +1,18 @@
+'use strict';
+
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const bodyParser = require('body-parser');
 const { appRoutes } = require('./api/routes/routes');
 
 // create application/json parser - used for /post method only
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   }),
 );
-app.use(bodyParser.json());
+app.use(express.json());
 
 // get MongoDB driver connection
 const dbo = require('./api/db/db');
@@ -22,8 +23,7 @@ app.use(appRoutes);
 // perform a database connection when the server starts
 dbo.connectToServer(function (err) {
   if (err) {
-    console.error(err);
-    process.exit();
+    throw err;
   }
 
   // start the Express server
