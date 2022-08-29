@@ -56,10 +56,10 @@ npm install;
 npm run verify;
 
 # Start devstack (MongoDB database)
-make devstack.start
+make devstack.start;
 
 # Run API Server
-npm run start
+npm run start;
 ```
 
 The server runs until stopped, by cancelling execution of the command.
